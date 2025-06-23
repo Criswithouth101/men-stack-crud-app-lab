@@ -4,12 +4,14 @@ const ticketSchema = new mongoose.Schema({
   id: Number,
   subject: String,
   description: String,
-  priority: String,
-  status: String
+  priority: Number,
+  status: String,
   createdAt: Date,
   customerEmail: String,
   Brand: String,
-  updatedAt: Date,
+  allowedContact: Boolean,
 });
 
 const Ticket = mongoose.model("Ticket", ticketSchema); 
+
+module.exports = Ticket;

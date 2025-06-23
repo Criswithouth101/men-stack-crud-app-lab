@@ -1,0 +1,43 @@
+<!-- views/fruits/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New support ticket</title>
+  </head>
+  <body>
+    <h1>Create a ticket!</h1>
+  <form action="/tickets" method="POST">
+    <label for="id">ID:</label>
+    <input type="number" name="id" id="id" />
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" id="subject" />
+
+     <label for="description">Description:</label>
+    <input type="text" name="description" id="description" />
+
+     <label for="priority">Priority:</label>
+    <input type="number" name="priority" id="priority" />
+
+    <label for="status">Status:</label>
+    <input type="text" name="status" id="status" />
+
+    <label for="createdAt">Creation date:</label>
+    <input type="datetime" name="createdAt" id="createdAt" />
+
+    <label for="customerEmail">Customer Email:</label>
+    <input type="text" name="customerEmail" id="customerEmail" />
+
+    <label for="brand">Brand:</label>
+    <input type="text" name="brand" id="brand" />
+
+    <label for="allowedContact">Can the customer be contacted?</label>
+    <input type="checkbox" name="allowedContact" id="allowedContact" />
+
+    <button type="submit">Add ticket</button>
+  </form>
+</body>
+</html>
