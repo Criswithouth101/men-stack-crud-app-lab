@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const ticketSchema = new mongoose.Schema({
-  id: Number,
+  escalationId: Number,
   subject: String,
   description: String,
   priority: Number,
   status: String,
   createdAt: Date,
   customerEmail: String,
-  Brand: String,
+  brand: String,
   allowedContact: Boolean,
 });
 
