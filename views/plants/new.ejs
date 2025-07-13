@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bringing a new plant home?</title>
+  </head>
+  <body>
+    <h1>Add your new plant here!</h1>
+  <form action="/plants" method="POST">
+
+    <label for="name">Plant name:</label>
+    <input type="text" name="name" id="name" />
+
+     <label for="species">Species:</label>
+    <input type="text" name="species" id="species" />
+
+    <label for="lastWatered">When did you water the plant last?</label>
+    <input type="datetime" name="lastWatered" id="lastWatered" />
+
+    <label for="isHydroponic">Are you growing this plant with a hydroponic method?</label>
+    <input type="checkbox" name="isHydroponic" id="isHydroponic" />
+    
+    <label for="careLevel"> Care Level:</label>
+    <input type="text" name="careLevel" id="careLevel" />
+
+    <label for="notes"> Add your notes:</label>
+    <input type="text" name="notes" id="notes" />
+
+    <button type="submit">Add Plant</button>
+  </form>
+</body>
+</html>

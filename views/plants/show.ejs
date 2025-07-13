@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= plant.name %> Details</title> 
+  </head>
+  <body>
+    <a href="/plants/">← Back to All Plants</a>
+
+    <h1><%= plant.name %></h1> 
+    <p><strong>Species:</strong> <%= plant.species %></p> 
+    <p><strong>Last Watered:</strong> <%= plant.lastWatered ? plant.lastWatered.toDateString() : "Unknown" %></p> 
+    <p><strong>Care Level:</strong> <%= plant.careLevel %></p> 
+    <p><strong>Notes:</strong> <%= plant.Notes || "No notes" %></p> 
+
+    <% if (plant.isHydroponic) { %>
+      <p>This plant is hydroponic </p>
+    <% } else { %>
+      <p>This is a soil-based plant </p>
+    <% } %>
+<form action="/plants/<%=plant._id%>?_method=DELETE" method="POST">
+  <button type="submit">Delete <%= plant.name %></button>
+  <a href="/plants/<%= plant._id %>/edit">Edit <%= plant.name %></a>
+</form>
+  </body>
+</html>
+

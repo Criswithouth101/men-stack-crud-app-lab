@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit plant/title>
+  </head>
+  <body>
+    <h1>Change your plant <%= plant.name %> information!</h1>
+  <form action="/plants/<%=plant._id%>?_method=PUT" method="POST">
+
+    <label for="name">Plant name:</label>
+    <input type="text" name="name" value="<%= plant.name %>" />
+
+     <label for="species">Species:</label>
+    <input type="text" name="species" value="<%= plant.species %>" />
+
+    <label for="lastWatered">When did you water the plant last?</label>
+    <input type="datetime" name="lastWatered" value="<%= plant.lastWatered %>" />
+
+    <label for="isHydroponic">Are you growing this plant with a hydroponic method?</label>
+    <input type="checkbox" name="isHydroponic" <% if (plant.isHydroponic) { %>checked<% } %> > />
+    
+    <label for="careLevel"> Care Level:</label>
+    <input type="text" name="careLevel" value="<%= plant.careLevel %>" />
+
+    <label for="notes"> Add your notes:</label>
+    <input type="text" name="notes" value="<%= plant.notes %>" />
+
+    <button type="submit">Update Plant</button>
+  </form>
+</body>
+</html>
