@@ -3,31 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit plant/title>
-  </head>
-  <body>
-    <h1>Change your plant <%= plant.name %> information!</h1>
-  <form action="/plants/<%=plant._id%>?_method=PUT" method="POST">
-
-    <label for="name">Plant name:</label>
-    <input type="text" name="name" value="<%= plant.name %>" />
-
-     <label for="species">Species:</label>
-    <input type="text" name="species" value="<%= plant.species %>" />
-
-    <label for="lastWatered">When did you water the plant last?</label>
-    <input type="datetime" name="lastWatered" value="<%= plant.lastWatered %>" />
-
-    <label for="isHydroponic">Are you growing this plant with a hydroponic method?</label>
-    <input type="checkbox" name="isHydroponic" <% if (plant.isHydroponic) { %>checked<% } %> > />
     
-    <label for="careLevel"> Care Level:</label>
-    <input type="text" name="careLevel" value="<%= plant.careLevel %>" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    
+    <title>Edit <%= plant.name %></title>
+  </head>
 
-    <label for="notes"> Add your notes:</label>
-    <input type="text" name="notes" value="<%= plant.notes %>" />
+  <body>
 
-    <button type="submit">Update Plant</button>
-  </form>
-</body>
+    <nav class="navbar is-light">
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/plants">All Plants</a>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Edit Plant: <%= plant.name %></h1>
+
+        <form action="/plants/<%= plant._id %>?_method=PUT" method="POST" class="box">
+
+          <div class="field">
+            <label class="label" for="name">Plant name</label>
+            <div class="control">
+              <input class="input" type="text" name="name" value="<%= plant.name %>" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="species">Species</label>
+            <div class="control">
+              <input class="input" type="text" name="species" value="<%= plant.species %>">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="lastWatered">Last Watered</label>
+            <div class="control">
+              <input class="input" type="datetime-local" name="lastWatered" value="<%= plant.lastWatered ? plant.lastWatered.toISOString().slice(0,16) : '' %>">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" name="isHydroponic" <% if (plant.isHydroponic) { %>checked<% } %> >
+              Grown hydroponically
+            </label>
+          </div>
+
+          <div class="field">
+            <label class="label" for="careLevel">Care Level</label>
+            <div class="control">
+              <input class="input" type="text" name="careLevel" value="<%= plant.careLevel %>">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="notes">Notes</label>
+            <div class="control">
+              <textarea class="textarea" name="notes"><%= plant.notes %></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Update Plant</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </body>
 </html>

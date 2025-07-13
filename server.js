@@ -4,12 +4,16 @@ const express = require('express');
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const path = require("path");
 
 const app = express();
+const Plant = require("./models/plant.js");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev")); 
+
+app.use(express.static(path.join(__dirname, "public")));
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -41,7 +45,7 @@ app.post("/plants", async (req, res) => {
       lastWatered: new Date(req.body.lastWatered), // format 'YYYY-MM-DD'
       isHydroponic: req.body.isHydroponic,
       careLevel: req.body.careLevel,
-      Notes: req.body.Notes
+      notes: req.body.notes
     };
 
     await Plant.create(plantData);
@@ -68,7 +72,7 @@ app.delete("/plants/:plantId", async (req, res) => {
 });
 
 // edit a plant
-app.get("/plant/:plantId/edit", async (req, res) => {
+app.get("/plants/:plantId/edit", async (req, res) => {
   const foundPlant = await Plant.findById(req.params.plantId);
    res.render("plants/edit.ejs", {
     plant: foundPlant,
@@ -92,7 +96,7 @@ mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-const Plant = require("./models/plant.js");
+
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');

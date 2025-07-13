@@ -3,31 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Bringing a new plant home?</title>
   </head>
+
   <body>
-    <h1>Add your new plant here!</h1>
-  <form action="/plants" method="POST">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/plants">All Plants</a>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Add Your New Plant 🌿</h1>
 
-    <label for="name">Plant name:</label>
-    <input type="text" name="name" id="name" />
+        <form action="/plants" method="POST">
 
-     <label for="species">Species:</label>
-    <input type="text" name="species" id="species" />
+          <div class="field">
+            <label class="label" for="name">Plant Name</label>
+            <div class="control">
+              <input class="input" type="text" name="name" id="name" required />
+            </div>
+          </div>
 
-    <label for="lastWatered">When did you water the plant last?</label>
-    <input type="datetime" name="lastWatered" id="lastWatered" />
+          <div class="field">
+            <label class="label" for="species">Species</label>
+            <div class="control">
+              <input class="input" type="text" name="species" id="species" required />
+            </div>
+          </div>
 
-    <label for="isHydroponic">Are you growing this plant with a hydroponic method?</label>
-    <input type="checkbox" name="isHydroponic" id="isHydroponic" />
-    
-    <label for="careLevel"> Care Level:</label>
-    <input type="text" name="careLevel" id="careLevel" />
+          <div class="field">
+            <label class="label" for="lastWatered">Choose the date you water your plan last</label>
+            <div class="control">
+              <input class="input" type="date" name="lastWatered" id="lastWatered" required />
+            </div>
+          </div>
 
-    <label for="notes"> Add your notes:</label>
-    <input type="text" name="notes" id="notes" />
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" name="isHydroponic" id="isHydroponic" />
+              Hydroponic Plant?
+            </label>
+          </div>
 
-    <button type="submit">Add Plant</button>
-  </form>
-</body>
+          <div class="field">
+            <label class="label" for="careLevel">Care Level</label>
+            <div class="control">
+              <input class="input" type="text" name="careLevel" id="careLevel" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="notes">Notes</label>
+            <div class="control">
+              <textarea class="textarea" name="notes" id="notes"></textarea>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary" type="submit">Add Plant</button>
+            </div>
+            <div class="control">
+              <a href="/plants" class="button is-light">Cancel</a>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </body>
 </html>

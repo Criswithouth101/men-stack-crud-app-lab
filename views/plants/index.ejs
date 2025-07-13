@@ -4,18 +4,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Plant Inventory  </title>
-    <a href="/plants">Search for a plant</a>
-    <a href="/plants/new">Add New Plant</a>
-    <a href="/plants/">Back to Plants</a>
+
   </head>
   <body>
-    <h1>All Plants</h1>
-  <ul>
-    <% plants.forEach(plant => { %>
-      <li><a href="/plants/<%= plant._id %>"><%= plant.name %></a></li>
-    <% }); %>
-  </ul>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/plants">Search for a plant</a>
+          <a class="navbar-item" href="/plants/new">Add New Plant</a>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">🌱 All Plants</h1>
 
+        <div class="box">
+          <ul>
+            <% plants.forEach(plant => { %>
+              <li class="mb-2">
+                <a class="has-text-link" href="/plants/<%= plant._id %>">
+                  <strong><%= plant.name %></strong>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

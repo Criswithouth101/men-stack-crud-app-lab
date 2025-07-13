@@ -6,7 +6,7 @@ const plantSchema = new mongoose.Schema({
   lastWatered: Date,
   isHydroponic: Boolean,
   careLevel: String,
-  Notes: String,
+  notes: String,
 });
 
 const Plant = mongoose.model("Plant", plantSchema); 

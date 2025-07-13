@@ -3,26 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    
     <title><%= plant.name %> Details</title> 
   </head>
+
   <body>
-    <a href="/plants/">← Back to All Plants</a>
+ 
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/plants">All Plants</a>
+        </div>
+      </div>
+    </nav>
 
-    <h1><%= plant.name %></h1> 
-    <p><strong>Species:</strong> <%= plant.species %></p> 
-    <p><strong>Last Watered:</strong> <%= plant.lastWatered ? plant.lastWatered.toDateString() : "Unknown" %></p> 
-    <p><strong>Care Level:</strong> <%= plant.careLevel %></p> 
-    <p><strong>Notes:</strong> <%= plant.Notes || "No notes" %></p> 
 
-    <% if (plant.isHydroponic) { %>
-      <p>This plant is hydroponic </p>
-    <% } else { %>
-      <p>This is a soil-based plant </p>
-    <% } %>
-<form action="/plants/<%=plant._id%>?_method=DELETE" method="POST">
-  <button type="submit">Delete <%= plant.name %></button>
-  <a href="/plants/<%= plant._id %>/edit">Edit <%= plant.name %></a>
-</form>
+    <section class="section">
+      <div class="container">
+
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= plant.name %>
+            </p>
+          </header>
+
+          <div class="card-content">
+            <div class="content">
+              <p><strong>Species:</strong> <%= plant.species %></p> 
+              <p><strong>Last Watered:</strong> <%= plant.lastWatered ? plant.lastWatered.toDateString() : "Unknown" %></p> 
+              <p><strong>Care Level:</strong> <%= plant.careLevel %></p> 
+              <p><strong>Notes:</strong> <%= plant.notes || "No notes" %></p> 
+
+              <% if (plant.isHydroponic) { %>
+                <p><em>This plant is hydroponic 🌊</em></p>
+              <% } else { %>
+                <p><em>This is a soil-based plant 🌱</em></p>
+              <% } %>
+            </div>
+          </div>
+
+          <footer class="card-footer">
+            <form class="card-footer-item" action="/plants/<%=plant._id%>?_method=DELETE" method="POST" style="margin-right: 1rem;">
+              <button class="button is-danger is-light" type="submit">Delete</button>
+            </form>
+            <a class="card-footer-item button is-info is-light" href="/plants/<%= plant._id %>/edit">Edit</a>
+          </footer>
+        </div>
+
+      </div>
+    </section>
   </body>
 </html>
+
 
